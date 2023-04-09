@@ -1,6 +1,5 @@
 import React from 'react';
 import {Button, ProsAndCons, Rating, TextArea, TitleBar} from './components';
-import './assets/fonts/font.css' 
 
 
 function App() {
@@ -9,7 +8,7 @@ function App() {
 
 	return (
 		<form
-			className="h-[90%] overflow-hidden "
+			className="font-vazir h-[90%] overflow-hidden "
 			onClick={(e) => e.preventDefault()}
 		>
 			<div className="w-[95%] flax relative h-fit m-auto">
@@ -48,7 +47,7 @@ function App() {
 					bg-[#009dac] 
 					text-white 
 					border-none "
-				> ثبت بازخورد </Button>
+				>ثبت بازخورد </Button>
 			</div>
 		</form>
 	);
