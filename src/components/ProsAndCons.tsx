@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button } from './Button'
 import {useState} from 'react'
-import { Ul } from './Ul'
 import { ListSection } from './ListSection'
 
 interface Props{
@@ -31,9 +30,8 @@ const data2:IProduct[]=[
    { "txt": "pros😍" ,"id":"7"},
    { "txt": "pros😍" ,"id":"8"},
 ]
-
-// console.log(dummyData);
 export const ProsAndCons:React.FC<Props> = ({className}) => {
+
    const [btnPros , setBtnPros]= useState<string>("")
    const [btnCons , setBtnCons]= useState<string>("")
    const [checked , setChecked] = useState<boolean>(true)

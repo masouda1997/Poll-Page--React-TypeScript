@@ -24,7 +24,7 @@ interface IconProps {
 	color?: string;
 }
 
-const FullStar = ({ color = "#000" }: IconProps) => {
+const FullStar = ({ color = "#cfcfcf" }: IconProps) => {
 	return (
 		<div style={{ color: color }}>
          <BsStarFill size={30}/>
@@ -32,7 +32,7 @@ const FullStar = ({ color = "#000" }: IconProps) => {
 		);
 };
 
-const HalfStar = ( {color = "#000"} : IconProps) => {
+const HalfStar = ( {color = "#cfcfcf"} : IconProps) => {
 	return (
 		<div style={{ color: color }}>
 			<BsStarHalf size={30}/>
@@ -40,10 +40,10 @@ const HalfStar = ( {color = "#000"} : IconProps) => {
 	);
 };
 
-const EmptyStar = ({ color = "#000" }: IconProps) => {
+const EmptyStar = ({color= "#cfcfcf"} : IconProps) => {
 	return (
 		<div style={{ color: color }}>
-			<BsStarFill size={30}/>
+			<BsStarFill size={30}/>	
 		</div>
 	);
 };
@@ -52,12 +52,10 @@ export const Rating: React.FC<RatingProps> = ({
 	className,
 	count,
 	value,
-	color = "#cfcfcf",
-	hoverColor = "#ffc107",
+	color,
+	hoverColor = "#ffe207",
 	activeColor = "#ffc107",
-	size = 30,
-	edit = false,
-	isHalf = true,
+	isHalf,
 	onChange,
 	emptyIcon = <EmptyStar />,
 	halfIcon = <HalfStar />,
@@ -66,23 +64,14 @@ export const Rating: React.FC<RatingProps> = ({
 	const [hoverValue, setHoverValue] = useState<number | undefined>(undefined);
 
 	const handleMouseMove = (index: number) => {
-		if (!edit) {
-			return;
-		}
 		setHoverValue(index);
 	};
 
 	const handleMouseLeave = () => {
-		if (!edit) {
-			return;
-		}
 		setHoverValue(undefined);
 	};
 
 	const handleClick = (index: number) => {
-		if (!edit) {
-			return;
-		}
 		if (onChange) {
 			onChange(index + 1);
 		}
@@ -90,10 +79,12 @@ export const Rating: React.FC<RatingProps> = ({
 
    const getColor = (index: number) => {
 		if (hoverValue !== undefined) {
+			// star is empty so get hover color of star 
 			if (index <= hoverValue) {
 				return hoverColor;
 			}
 		}
+		// its a filled star and gets its color 
 		if (value > index) {
 			return activeColor;
 		}
@@ -117,7 +108,7 @@ export const Rating: React.FC<RatingProps> = ({
 			}
 		}
 
-		stars.push(
+		stars.push( 
 			<div
 				key={i}
 				style={{ cursor: "pointer" }}
@@ -126,7 +117,6 @@ export const Rating: React.FC<RatingProps> = ({
 				onClick={() => handleClick(i)}
 			>
 				{React.cloneElement(star, {
-					size: size,
 					color: getColor(i),
 				})}
 			</div>
