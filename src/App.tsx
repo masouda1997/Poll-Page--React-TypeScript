@@ -8,12 +8,12 @@ import './assets/fonts/font.css'
 function App() {
 	const [rating, setRating] = React.useState(0);
 
-	const handleRatingChange = (newRating: number) => {
-		setRating(newRating);
-	};
+	// const handleRatingChange = (newRating: number) => {
+	// 	setRating(newRating);
+	// };
 
 	return (
-		<div className='h-[90%] overflow-hidden'>
+		<form className='h-[90%] overflow-hidden 'onClick={(e)=>e.preventDefault()}>
 			<div className='w-[95%] flax relative h-fit m-auto'>
 
 				<TitleBar />
@@ -28,7 +28,7 @@ function App() {
 					onChange={(value: any) => setRating(value)}
 				/>
 				{/* poll box */}
-				<TextArea/>
+				<TextArea onChange={(e:any)=>console.log(e.target.value)}/>
 
 				{/*cons and pros */}
 				<ProsAndCons className=' mt-5 tall--xs:hidden'/>
@@ -55,7 +55,7 @@ function App() {
 						ثبت بازخورد 
 				</Button>
 			</div>
-		</div>
+		</form>
 	);
 }
 

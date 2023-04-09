@@ -24,7 +24,8 @@ const ButtonComponent: React.FC<IButtonProps> = ({
 			onClick={onClick}
 			{...rest}
 		>
-			<span className={`${className}`}>{children}</span>
+			{/* <span className={`${className}`}>{children}</span> */}
+			{children}
 		</button>
 	);
 };

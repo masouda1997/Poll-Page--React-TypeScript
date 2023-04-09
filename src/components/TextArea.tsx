@@ -1,15 +1,11 @@
 import React from 'react'
 
 interface TextAreaProps {
-   className?: string;
    value ?: string;
-   onChange?: (value: number) => void;
-   placeholder ?: string;
+   onChange?: (value: any) => void;
 }
 
 const TextArea:React.FC<TextAreaProps> = ({ 
-   className ,
-   placeholder,
    value,
    onChange,
 }) => {
@@ -19,6 +15,7 @@ const TextArea:React.FC<TextAreaProps> = ({
 			value={value}
 			className={`w-[95%] flex p-2 rounded-md mx-auto  my-5 border-[#009dac] border-2 placeholder-[#009dac] outline-[#009dac] min-h-[70px]
          lg:w-[70%] lg:min-h-[100px] `}
+         onChange={onChange}
 		/>
    );
 }

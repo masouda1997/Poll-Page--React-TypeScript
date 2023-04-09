@@ -21,7 +21,6 @@ interface RatingProps {
 }
 
 interface IconProps {
-	size?: number;
 	color?: string;
 }
 
