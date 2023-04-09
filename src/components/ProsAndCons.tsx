@@ -2,11 +2,12 @@ import React from 'react'
 import { Button } from './Button'
 import {useState} from 'react'
 import { Ul } from './Ul'
+import { ListSection } from './ListSection'
 
 interface Props{
    className?:string,
 }
-interface IProduct {
+export interface IProduct {
    txt: string,
    id: string,
 }
@@ -65,46 +66,38 @@ export const ProsAndCons:React.FC<Props> = ({className}) => {
    }
 
 
-   return ( 
-   <div className={className}>
-      <div className='flex justify-evenly lg:py-3' >
-         <Button className={`${btnPros} font-semibold lg:py-0 lg:text-[20px] hover:text-[#009dac] duration-100`} onClick={prosHandler} >نقاط قوت</Button> 
-         <Button className={`${btnCons} font-semibold lg:py-0 lg:text-[20px] hover:text-[#009dac] duration-100`} onClick={consHandler} >نقاط ضعف</Button>
-      </div>
+   return (
+		<div className={className}>
+			<div className="flex justify-evenly lg:py-3">
+				<Button
+					className={`${btnPros} font-semibold lg:py-0 lg:text-[20px] hover:text-[#009dac] duration-100`}
+					onClick={prosHandler}
+				>
+					نقاط قوت
+				</Button>
+				<Button
+					className={`${btnCons} font-semibold lg:py-0 lg:text-[20px] hover:text-[#009dac] duration-100`}
+					onClick={consHandler}
+				>
+					نقاط ضعف
+				</Button>
+			</div>
 
-       {/* list components  */}
+			{/* list section */}
 
-      {checked ? 
-      <>
-         <p className='py-3 lg:py-3 text-center md:py-10 lg:text-xl'>نقاط مثبت متخصص را انتخاب کنید</p> 
-
-
-         <Ul className='grid grid-cols-2 lg:grid-cols-4 lg:w-[70%] m-auto gap-y-3 gap-x-6'>
-            {prosList.map((item , i)=>(
-               <li onClick={()=>toggle(i)} className={`${status === i?"!bg-[#009dac] !text-white duration-500":""} border-[#009dac] text-[#009dac] border text-center rounded-full p-2`}>{item.txt}</li>
-            ))}
-
-         </Ul>
-
-
-         {/* <ul className='grid grid-cols-2 lg:grid-cols-4 lg:w-[70%] m-auto gap-y-3 gap-x-6'>
-            
-         </ul>  */}
-      </>
-      :
-      <>
-         <p className='py-3 lg:py-3 text-center md:py-10 lg:text-xl'>نقاط منفی متخصص را انتخاب کنید</p>
-         <Ul className='grid grid-cols-2 lg:grid-cols-4 lg:w-[70%] m-auto gap-y-3 gap-x-6'>
-         {conList.map((item , i)=>(
-               <li onClick={()=>toggle(i)} className={`${status === i?"!bg-[#009dac] !text-white duration-500":""} border-[#009dac] text-[#009dac] border text-center rounded-full p-2`}>{item.txt}</li>
-            ))}
-         </Ul>
-      </>
-
-      }
-      
-      
-
-   </div>
+			{checked ? (
+				<ListSection
+					dataList={prosList}
+					toggle={toggle}
+					status={status}
+				/>
+			) : (
+				<ListSection
+					dataList={conList}
+					toggle={toggle}
+					status={status}
+				/>
+			)}
+		</div>
    );
 }
